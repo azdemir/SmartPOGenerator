@@ -1,22 +1,54 @@
-🚀 Gemini POM Scaffolder v3.5
-Gemini POM Scaffolder is a specialized productivity tool for Test Automation Engineers. It automates the creation of Page Object Model (POM) classes by scanning live web pages and instantly generating Java code with Selenium @FindBy annotations and action methods.
-✨ Key Features
-    •    Smart Multi-Strategy Locators: Uses a prioritized selection logic: ID > Name > XPath.
-    •    Contextual XPath Generation: Automatically creates robust, relative XPaths using contains(text()), placeholder, or attributes when standard IDs are missing.
-    •    Boilerplate Method Generation: Produces ready-to-use methods like fillUsername(String text) or clickLoginButton() based on element type.
-    •    Desktop GUI: A clean, user-friendly interface built with Java Swing for rapid interaction.
-    •    Instant Export: Save generated classes directly to your project's src/test/java/.../pages directory.
-    •    Interactive Element Detection: Scans for input, button, select, textarea, and <a> (links).
+# 🚀 Smart PO Generator v1.0
 
-🛠️ Prerequisites & Setup
-1. Requirements
-    •    Java JDK: 11 or higher.
-    •    Maven: For managing dependencies.
-    •    Selenium: Ensure your test project uses selenium-java 4.x.
-2. Maven Dependencies
-Add the following to your pom.xml to enable HTML parsing and Selenium support:
-XML
+**Smart PO Generator** is a productivity tool designed for Test Automation Engineers.  
+It automatically scans live web pages and generates **Page Object Model (POM)** classes in Java, complete with Selenium `@FindBy` annotations and ready-to-use action methods.
 
+## ✨ Key Features
+
+- **Smart Multi-Strategy Locators**  
+  Prioritized locator logic: **ID → Name → XPath**
+
+- **Contextual XPath Generation**  
+  Builds robust, relative XPaths using `contains(text())`, `placeholder`, or other attributes
+
+- **Method Generation**  
+  Creates intuitive methods such as:  
+  `fillUsername(String text)`  
+  `clickLoginButton()`
+
+- **Desktop GUI (Java Swing)**  
+  Clean, user-friendly interface
+
+- **Instant Export**  
+  Save generated classes directly into your project’s `src/test/java/.../pages` directory
+
+- **Interactive Element Detection**  
+  Detects `<input>`, `<button>`, `<select>`, `<textarea>`, and `<a>` elements
+
+# 🚀 Usage Workflow
+
+- Launch
+Run the main method in PomGeneratorApp.java
+- Analyze
+Enter the target URL and click Generate Code
+- Review
+Inspect the generated @FindBy locators and methods
+- Export
+Click Export to .java File, choose your project folder, and the tool will create the class using the page title as the filename.
+
+## 🛠️ Prerequisites & Setup
+
+### 1. Requirements
+
+- Java JDK 11+
+- Maven
+- Selenium Java 4.x
+
+### 2. Maven Dependencies
+
+Add the following to your `pom.xml`:
+
+```xml
 <dependencies>
     <dependency>
         <groupId>org.jsoup</groupId>
@@ -30,10 +62,3 @@ XML
         <version>4.18.1</version>
     </dependency>
 </dependencies>
-
-🚀 Usage Workflow
-    1    Launch: Run the main method in PomGeneratorApp.java.
-    2    Analyze: Enter the target URL and click "Generate Code".
-    3    Review: Examine the generated @FindBy strategies in the preview window.
-    4    Export: Click "Export to .java File", select your project folder, and the tool creates the class with the correct filename based on the page title.
-
