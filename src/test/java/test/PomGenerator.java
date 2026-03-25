@@ -6,6 +6,7 @@ import org.jsoup.select.Elements;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -70,8 +71,14 @@ public class PomGenerator extends JFrame {
 
     private void processUrl() {
         try {
-            String url = urlField.getText();
-            Document doc = Jsoup.connect(url).get();
+            String url = urlField.getText().trim();
+            Document doc;
+            if (url.startsWith("file://")) {
+                String filePath = url.substring(7); // strip "file://" leaving "/path/to/file"
+                doc = Jsoup.parse(new File(filePath), "UTF-8");
+            } else {
+                doc = Jsoup.connect(url).get();
+            }
             generatedClassName = doc.title().replaceAll("[^a-zA-Z]", "") + "Page";
             if(generatedClassName.isEmpty()) generatedClassName = "DefaultPage";
             
