@@ -15,12 +15,9 @@ public class PageParser {
 
         Document doc;
 
-        if (url.startsWith("file:///")) {
-            String filePath = url.substring(7); // strip "file://" leaving "/path/to/file"
-            doc = Jsoup.parse(new File(filePath), "UTF-8");
-        } else if (url.startsWith("file://")) {
-            String filePath = url.substring(7);
-            doc = Jsoup.parse(new File(filePath), "UTF-8");
+        if (url.startsWith("file://")) {
+            File file = new File(new java.net.URI(url));
+            doc = Jsoup.parse(file, "UTF-8");
         } else if (url.startsWith("http://") || url.startsWith("https://")) {
             doc = Jsoup.connect(url).get();
         } else {
